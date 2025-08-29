@@ -25,6 +25,7 @@ const winMessage = document.querySelector('.message-win');
 const tds = Array.from(document.querySelectorAll('td'));
 const field = document.querySelector('.game-field');
 const gameOverMessage = document.querySelector('.game-over');
+const styleSheet = document.styleSheets[0];
 
 clickButton.addEventListener('click', () => {
   if (game.getStatus() === 'idle') {
@@ -55,9 +56,10 @@ clickButton.addEventListener('click', () => {
 
     for (let i = styleSheet.cssRules.length - 1; i >= 0; i--) {
       const rule = styleSheet.cssRules[i];
+
       if (
         rule.type === CSSRule.KEYFRAMES_RULE &&
-        keyframeNames.includes(rule.name)
+        window.keyframeNames.includes(rule.name)
       ) {
         styleSheet.deleteRule(i);
       }
@@ -95,13 +97,14 @@ document.addEventListener('keydown', (e) => {
   if (game.getStatus() === 'lose') {
     field.classList.add('game-field--lose');
     lostMessage.classList.remove('hidden');
-    const styleSheet = document.styleSheets[0];
+
     gameOverMessage.classList.add('game-over--visible');
 
     tds.forEach((item, index) => {
-      const name = `shake-${index}`;
+      const title = `shake-${index}`;
 
-      let keyframes = `@keyframes ${name} {`;
+      let keyframes = `@keyframes ${title} {`;
+
       for (let i = 0; i <= 80; i++) {
         const rot = (i % 2 === 0 ? 2 : -2) * (i % 4 < 2 ? 1 : -1);
         const tx = (i % 2 === 0 ? 2 : -2) * (i % 4 < 2 ? 1 : -1);
@@ -112,6 +115,7 @@ document.addEventListener('keydown', (e) => {
       const randX = (Math.random() - 0.5) * 1000;
       const randY = (Math.random() - 0.5) * 1000;
       const rotEnd = (Math.random() - 0.5) * 1440;
+
       keyframes += `
         80% { transform: rotate(0deg) translate(0,0); opacity: 1 }
         100% { transform: rotate(${rotEnd}deg) translate(${randX}px, ${randY}px); opacity: 0;}
@@ -120,13 +124,13 @@ document.addEventListener('keydown', (e) => {
       keyframes += `}`;
 
       styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-      item.style.animationName = name;
+      item.style.animationName = title;
       item.style.animationDelay = `${Math.random() * 0.2}s`;
       item.style.animationDuration = `${1.5 + Math.random()}s`;
       item.style.animationFillMode = 'forwards';
     });
 
-    lostMessage.addEventListener('click', (e) => {
+    lostMessage.addEventListener('click', () => {
       game.restart();
       boardRefresh();
       game.setScore(0);
@@ -146,9 +150,10 @@ document.addEventListener('keydown', (e) => {
 
       for (let i = styleSheet.cssRules.length - 1; i >= 0; i--) {
         const rule = styleSheet.cssRules[i];
+
         if (
           rule.type === CSSRule.KEYFRAMES_RULE &&
-          keyframeNames.includes(rule.name)
+          window.keyframeNames.includes(rule.name)
         ) {
           styleSheet.deleteRule(i);
         }
@@ -159,7 +164,7 @@ document.addEventListener('keydown', (e) => {
   if (game.getStatus() === 'win') {
     winMessage.classList.remove('hidden');
 
-    winMessage.addEventListener('click', (e) => {
+    winMessage.addEventListener('click', () => {
       game.restart();
       boardRefresh();
       game.setScore(0);

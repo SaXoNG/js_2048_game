@@ -27,14 +27,20 @@ class Game {
         if (stateAfterMove[i][j] === stateAfterMove[i][j + 1]) {
           stateAfterMove[i][j] = 2 * stateAfterMove[i][j];
           stateAfterMove[i][j + 1] = 0;
-          check ? '' : this.setScore(this.score + stateAfterMove[i][j]);
+
+          if (check) {
+            this.setScore(this.score + stateAfterMove[i][j]);
+          }
         } else if (
           stateAfterMove[i][j] === stateAfterMove[i][j + 2] &&
           stateAfterMove[i][j + 1] === 0
         ) {
           stateAfterMove[i][j] = 2 * stateAfterMove[i][j];
           stateAfterMove[i][j + 2] = 0;
-          check ? '' : this.setScore(this.score + stateAfterMove[i][j]);
+
+          if (check) {
+            this.setScore(this.score + stateAfterMove[i][j]);
+          }
         } else if (
           stateAfterMove[i][j] === stateAfterMove[i][j + 3] &&
           stateAfterMove[i][j + 1] === 0 &&
@@ -42,7 +48,10 @@ class Game {
         ) {
           stateAfterMove[i][j] = 2 * stateAfterMove[i][j];
           stateAfterMove[i][j + 3] = 0;
-          check ? '' : this.setScore(this.score + stateAfterMove[i][j]);
+
+          if (check) {
+            this.setScore(this.score + stateAfterMove[i][j]);
+          }
         }
       }
     }
@@ -89,14 +98,20 @@ class Game {
         if (stateAfterMove[i][j] === stateAfterMove[i][j - 1]) {
           stateAfterMove[i][j] = 2 * stateAfterMove[i][j];
           stateAfterMove[i][j - 1] = 0;
-          check ? '' : this.setScore(this.score + stateAfterMove[i][j]);
+
+          if (check) {
+            this.setScore(this.score + stateAfterMove[i][j]);
+          }
         } else if (
           stateAfterMove[i][j] === stateAfterMove[i][j - 2] &&
           stateAfterMove[i][j - 1] === 0
         ) {
           stateAfterMove[i][j] = 2 * stateAfterMove[i][j];
           stateAfterMove[i][j - 2] = 0;
-          check ? '' : this.setScore(this.score + stateAfterMove[i][j]);
+
+          if (check) {
+            this.setScore(this.score + stateAfterMove[i][j]);
+          }
         } else if (
           stateAfterMove[i][j] === stateAfterMove[i][j - 3] &&
           stateAfterMove[i][j - 1] === 0 &&
@@ -104,7 +119,10 @@ class Game {
         ) {
           stateAfterMove[i][j] = 2 * stateAfterMove[i][j];
           stateAfterMove[i][j - 3] = 0;
-          check ? '' : this.setScore(this.score + stateAfterMove[i][j]);
+
+          if (check) {
+            this.setScore(this.score + stateAfterMove[i][j]);
+          }
         }
       }
     }
@@ -166,7 +184,10 @@ class Game {
         ) {
           stateAfterMove[j][i] = 2 * stateAfterMove[j][i];
           stateAfterMove[j + 1][i] = 0;
-          check ? '' : this.setScore(this.score + stateAfterMove[j][i]);
+
+          if (check) {
+            this.setScore(this.score + stateAfterMove[j][i]);
+          }
         } else if (
           j < stateAfterMove.length - 2 &&
           stateAfterMove[j][i] === stateAfterMove[j + 2][i] &&
@@ -174,7 +195,10 @@ class Game {
         ) {
           stateAfterMove[j][i] = 2 * stateAfterMove[j][i];
           stateAfterMove[j + 2][i] = 0;
-          check ? '' : this.setScore(this.score + stateAfterMove[j][i]);
+
+          if (check) {
+            this.setScore(this.score + stateAfterMove[j][i]);
+          }
         } else if (
           j < stateAfterMove.length - 3 &&
           stateAfterMove[j][i] === stateAfterMove[j + 3][i] &&
@@ -183,7 +207,10 @@ class Game {
         ) {
           stateAfterMove[j][i] = 2 * stateAfterMove[j][i];
           stateAfterMove[j + 3][i] = 0;
-          check ? '' : this.setScore(this.score + stateAfterMove[j][i]);
+
+          if (check) {
+            this.setScore(this.score + stateAfterMove[j][i]);
+          }
         }
       }
     }
@@ -242,7 +269,10 @@ class Game {
         if (j > 0 && stateAfterMove[j][i] === stateAfterMove[j - 1][i]) {
           stateAfterMove[j][i] = 2 * stateAfterMove[j][i];
           stateAfterMove[j - 1][i] = 0;
-          check ? '' : this.setScore(this.score + stateAfterMove[j][i]);
+
+          if (check) {
+            this.setScore(this.score + stateAfterMove[j][i]);
+          }
         } else if (
           j > 1 &&
           stateAfterMove[j][i] === stateAfterMove[j - 2][i] &&
@@ -250,7 +280,10 @@ class Game {
         ) {
           stateAfterMove[j][i] = 2 * stateAfterMove[j][i];
           stateAfterMove[j - 2][i] = 0;
-          check ? '' : this.setScore(this.score + stateAfterMove[j][i]);
+
+          if (check) {
+            this.setScore(this.score + stateAfterMove[j][i]);
+          }
         } else if (
           j > 2 &&
           stateAfterMove[j][i] === stateAfterMove[j - 3][i] &&
@@ -259,7 +292,10 @@ class Game {
         ) {
           stateAfterMove[j][i] = 2 * stateAfterMove[j][i];
           stateAfterMove[j - 3][i] = 0;
-          check ? '' : this.setScore(this.score + stateAfterMove[j][i]);
+
+          if (check) {
+            this.setScore(this.score + stateAfterMove[j][i]);
+          }
         }
       }
     }
